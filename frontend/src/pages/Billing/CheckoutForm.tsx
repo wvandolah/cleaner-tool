@@ -11,7 +11,7 @@ import loadingIndicator from '../utils/loading.svg';
 import { UserContext } from '../../App';
 
 const url =
-  process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+  process.env.REACT_APP_backendURL || '';
 
 const headers: AxiosRequestConfig = {
   headers: { Authorization: localStorage.getItem('token') },

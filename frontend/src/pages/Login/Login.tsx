@@ -85,7 +85,7 @@ const Login: FunctionComponent<LoginProps> = ({ history, location }) => {
         managerID: manager,
       };
       const url =
-        process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+        process.env.REACT_APP_backendURL || '';
       try {
         const { data } = await axios.post(`${url}/users/`, nUser);
         localStorage.setItem('token', data.token);

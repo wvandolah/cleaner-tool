@@ -25,7 +25,7 @@ const InviteAst = (props: RouteComponentProps) => {
   const [error, setError] = useState({ msg: '', error: false });
   const [emailData, setEmailData] = useState(input);
   const url =
-    process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+    process.env.REACT_APP_backendURL || '';
   const headers: AxiosRequestConfig = {
     headers: {
       Authorization: localStorage.getItem('token'),

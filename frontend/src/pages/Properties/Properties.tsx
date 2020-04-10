@@ -32,7 +32,7 @@ import defaultHouse from '../../assets/house_alt.jpg';
 
 const Properties = () => {
   const url =
-    process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+    process.env.REACT_APP_backendURL || '';
   /* Axios calls to fetch / update properties */
   const [houses, error, loading] = useFetch(`${url}/houses`);
   const { subscription, role } = useContext(UserContext);

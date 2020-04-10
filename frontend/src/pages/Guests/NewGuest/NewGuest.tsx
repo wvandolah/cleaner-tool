@@ -32,7 +32,7 @@ const NewGuest = (props: any) => {
     */
     // TODO: Refactor to take advantage of Context API handling user info
     const url =
-      process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+      process.env.REACT_APP_backendURL || '';
     const token = localStorage.getItem('token');
     if (!token) {
       throw new Error('Not authenticated');

@@ -9,7 +9,7 @@ import { SVGContainer } from './Checkout.styles';
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 const url =
-  process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+  process.env.REACT_APP_backendURL || '';
 
 const CheckoutForm = (props: any) => {
   const { sum, stay_id } = useContext(PaymentContext);

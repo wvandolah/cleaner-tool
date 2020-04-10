@@ -32,7 +32,7 @@ const NewProperty = (props: any) => {
   useEffect(() => {
     // Get list of assistants from backend
     const url =
-      process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+      process.env.REACT_APP_backendURL || '';
 
     const headers: AxiosRequestConfig = {
       headers: {
@@ -135,7 +135,7 @@ const NewProperty = (props: any) => {
 
     try {
       const url =
-        process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+        process.env.REACT_APP_backendURL || '';
 
       const headers: AxiosRequestConfig = {
         headers: {

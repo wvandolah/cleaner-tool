@@ -28,7 +28,7 @@ const Checkout = (props: CheckoutProps) => {
   // const [error, setError] = useState<any>({ msg: '', error: false });
   // TODO: change state to include no default values
   const url =
-    process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+    process.env.REACT_APP_backendURL || '';
   const { id } = props.match.params;
   const [stay, setStay] = useState<any>(null);
   const [stayError, setStayError] = useState({ error: false, message: '' });

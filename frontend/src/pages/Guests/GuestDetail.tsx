@@ -24,7 +24,7 @@ const GuestDetail = (props: RouteComponentProps) => {
   // @ts-ignore
   const id = props.match.params.id;
   const url =
-    process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+    process.env.REACT_APP_backendURL || '';
 
   const [fetch, setFetch] = useState(false);
 

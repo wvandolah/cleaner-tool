@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
 // TODO: fix types
 const PropertyDetails = (props: any) => {
   const url =
-    process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+    process.env.REACT_APP_backendURL || '';
 
   const [property, propertyError, loading] = useFetch(
     `${url}/houses/${props.match.params.id}`,

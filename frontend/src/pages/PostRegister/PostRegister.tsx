@@ -60,7 +60,7 @@ interface PostFormProps extends RouteComponentProps {
 
 const PostForm = (props: PostFormProps) => {
   const url =
-    process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+    process.env.REACT_APP_backendURL || '';
 
   const emptyValues = {
     email: '',

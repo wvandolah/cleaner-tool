@@ -19,7 +19,7 @@ import loadingIndicator from '../utils/loading.svg';
 import defaultUser from '../../assets/default-user.jpg';
 
 const url =
-  process.env.REACT_APP_backendURL || 'https://cleaner-pos.herokuapp.com';
+  process.env.REACT_APP_backendURL || '';
 
 const clientId = process.env.REACT_APP_clientid;
 const stripeOauthUrl = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=
