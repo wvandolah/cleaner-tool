@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - '10'
+env:
+  - JWT_SECRET=JWT_SECRET
 cache:
   directories:
     - node_modules
