@@ -16,11 +16,11 @@ import * as connect from './controller/connect';
 import * as assistants from './controller/assistants';
 import path from 'path';
 
-export const server = express();
+const server = express();
 setGeneralMiddleware(server);
 
 server.use(express.static(path.resolve(path.join(__dirname, '../../frontend/build'))));
-server.get('/', (__, res) => res.sendFile('index.html'));
+server.get('/*', (__, res) => res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html')));
 
 server
   .route('/users')
