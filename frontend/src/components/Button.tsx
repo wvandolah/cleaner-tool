@@ -13,7 +13,7 @@ interface ButtonProps {
   color?: string;
   className?: string;
   classNameS?: string;
-  type?: string;
+  type?: "submit" | "button" | "reset" | undefined;
   disabled?: boolean;
   children?: any;
 }

@@ -20,7 +20,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { axiosErrorHandler } from '../../utils';
 import { EmptyPropertyValues } from './types';
 
-const NewProperty = (props: RouteComponentProps) => {
+const NewProperty = (props: any) => {
   const [urls, setUrls] = useState({} as UrlObj);
   const [assistants, setAssistants] = useState([] as AstObj[]);
   const [startValues, setStartValues] = useState(

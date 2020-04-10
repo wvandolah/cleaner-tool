@@ -22,7 +22,7 @@ import { emptyValues } from './types';
 import { axiosErrorHandler } from '../../utils';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const NewGuest = (props: RouteComponentProps) => {
+const NewGuest = (props: any) => {
   const [houses, setHouses] = useState([] as ManagerHouse[]);
   const [errors, setErrors] = useState({ msg: '', error: false });
   const setUpUrlAndHeaders = () => {
@@ -144,7 +144,7 @@ const NewGuest = (props: RouteComponentProps) => {
   };
 
   const setInitialValues = (
-    routeProps: RouteComponentProps,
+    routeProps: any,
   ): NewGuestInitialValues => {
     if (routeProps.location && routeProps.location.state) {
       const {
