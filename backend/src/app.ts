@@ -20,7 +20,7 @@ const server = express();
 setGeneralMiddleware(server);
 
 server.use(express.static(path.resolve(path.join(__dirname, '../../frontend/build'))));
-server.get('/', (__, res) => res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html')));
+
 
 server
   .route('/api/users')
@@ -120,6 +120,7 @@ const options = {
     protocol: 'http',
   },
 };
+server.get('/*', (__, res) => res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html')));
 server.use(companion.app(options));
 
 server.use(errorHandler);

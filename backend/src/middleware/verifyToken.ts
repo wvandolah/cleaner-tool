@@ -7,6 +7,9 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const secret = process.env.JWT_SECRET || 'secret';
 
   try {
+    if(!req.path.match(/\/api\//)){
+      next()
+    }
     // in axios if a header var is added that is null, axios sends string 'null'
     if (token === 'none' || token === 'null') {
       throw Error('Token required to access protected route');
