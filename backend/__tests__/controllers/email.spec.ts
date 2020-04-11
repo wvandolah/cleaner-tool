@@ -57,7 +57,7 @@ describe('/test email routes', () => {
     jest
       .spyOn(email, 'sgSend')
       .mockImplementationOnce(() => Promise.resolve(undefined));
-    const response = await supertest.post('/email/').send(sends);
+    const response = await supertest.post('/api/email/').send(sends);
 
     expect(response.status).toBe(403);
   });

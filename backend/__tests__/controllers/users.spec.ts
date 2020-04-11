@@ -58,7 +58,7 @@ describe('/user routes', () => {
   };
 
   test('GET request with no token returns a 403', async () => {
-    await supertest.get('/users/1').expect(403);
+    await supertest.get('/api/users/1').expect(403);
   });
 
   test('PUT request with no token returns a 403', async () => {
@@ -71,13 +71,13 @@ describe('/user routes', () => {
       role: 'manager',
     };
     await supertest
-      .put('/users/1')
+      .put('/api/users/1')
       .send(newUser)
       .expect(403);
   });
 
   test('DELETE request with no token returns 403', async () => {
-    await supertest.delete('/users/2').expect(403);
+    await supertest.delete('/api/users/2').expect(403);
   });
 
   test('GET request with invalid id returns a 404', async () => {
@@ -95,14 +95,14 @@ describe('/user routes', () => {
       Authorization: faultyToken,
     };
     await supertest
-      .get('/users/99')
+      .get('/api/users/99')
       .set(wrongHeaders)
       .expect(404);
   });
 
   test('GET request with id returns a specific user', async () => {
     const { body } = await supertest
-      .get('/users/1')
+      .get('/api/users/1')
       .set(headers)
       .expect(200);
     expect(body).toHaveProperty('id');
@@ -112,7 +112,7 @@ describe('/user routes', () => {
   // Now `get` only returns one user based on ext_it
   test.skip('GET request with no id returns all users', async () => {
     const { body } = await supertest
-      .get('/users')
+      .get('/api/users')
       .set(headers)
       .expect(200);
     expect(body.length).toBe(data.length);
@@ -128,7 +128,7 @@ describe('/user routes', () => {
       role: 'manager',
     };
     await supertest
-      .post('/users')
+      .post('/api/users')
       .send(newUser)
       .set('Accept', 'application/json')
       .expect(201);
@@ -145,7 +145,7 @@ describe('/user routes', () => {
       role: 'manager',
     };
     const { body } = await supertest
-      .put('/users/1')
+      .put('/api/users/1')
       .send(newUser)
       .set(headers)
       .expect(201);
@@ -154,7 +154,7 @@ describe('/user routes', () => {
 
   test('DELETE request is successful', async () => {
     await supertest
-      .delete('/users/2')
+      .delete('/api/users/2')
       .set(headers)
       .expect(200);
   });

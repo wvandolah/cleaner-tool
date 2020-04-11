@@ -43,7 +43,7 @@ describe('/item routes', () => {
 
   test('Unable to get all lists without token', async () => {
     await supertest
-      .get('/items')
+      .get('/api/items')
       .expect(403)
       .catch((e) => {
         throw e;
@@ -52,7 +52,7 @@ describe('/item routes', () => {
 
   test('Unable to get single lists without token', async () => {
     await supertest
-      .get('/items/1')
+      .get('/api/items/1')
       .expect(403)
       .catch((e) => {
         throw e;
@@ -65,7 +65,7 @@ describe('/item routes', () => {
       task: 'lions tigers and snakes',
     };
     await supertest
-      .post('/items/')
+      .post('/api/items/')
       .send(newItem)
       .expect(403)
       .catch((e) => {
@@ -75,7 +75,7 @@ describe('/item routes', () => {
 
   test('Unable to delete item without token', async () => {
     await supertest
-      .delete('/items/5')
+      .delete('/api/items/5')
       .expect(403)
       .catch((e) => {
         throw e;
@@ -88,7 +88,7 @@ describe('/item routes', () => {
       task: 'lions tigers and snakes',
     };
     supertest
-      .put('/items/599')
+      .put('/api/items/599')
       .send(newItem)
       .expect(403)
       .catch((e) => {
@@ -98,7 +98,7 @@ describe('/item routes', () => {
 
   test('Able to get all lists', async () => {
     const { body } = await supertest
-      .get('/items')
+      .get('/api/items')
       .set(headers)
       .expect(200)
       .catch((e) => {
@@ -111,7 +111,7 @@ describe('/item routes', () => {
 
   test('Able to get single lists', async () => {
     const { body } = await supertest
-      .get('/items/1')
+      .get('/api/items/1')
       .set(headers)
       .expect(200)
       .catch((e) => {
@@ -123,7 +123,7 @@ describe('/item routes', () => {
 
   test('Unable to get single lists of unreal item', async () => {
     await supertest
-      .get('/items/199')
+      .get('/api/items/199')
       .set(headers)
       .expect(404)
       .catch((e) => {
@@ -137,7 +137,7 @@ describe('/item routes', () => {
       task: 'lions tigers and snakes',
     };
     await supertest
-      .post('/items/')
+      .post('/api/items/')
       .send(newItem)
       .set(headers)
       .expect(400)
@@ -148,7 +148,7 @@ describe('/item routes', () => {
 
   test('able to delete item', async () => {
     await supertest
-      .delete('/items/5')
+      .delete('/api/items/5')
       .set(headers)
       .expect(200)
       .catch((e) => {
@@ -162,7 +162,7 @@ describe('/item routes', () => {
       task: 'lions tigers and snakes',
     };
     await supertest
-      .put('/items/599')
+      .put('/api/items/599')
       .set(headers)
       .send(newItem)
       .expect(400)

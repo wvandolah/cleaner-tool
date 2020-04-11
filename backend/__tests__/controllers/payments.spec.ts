@@ -40,10 +40,10 @@ jest.mock('stripe', () => () => {
 //   return Promise.resolve(0);
 // });
 
-describe('/payments routes', () => {
+describe('/api/payments routes', () => {
   test('Should return status 403 and no message on get', async () => {
     try {
-      const { body } = await await supertest.get('/payments').expect(403);
+      const { body } = await await supertest.get('/api/payments').expect(403);
 
       expect(body).not.toHaveProperty(
         'message',
@@ -55,12 +55,12 @@ describe('/payments routes', () => {
   });
 
   test('Should deny post request without auth token', async () => {
-    await supertest.post('/payments').expect(403);
+    await supertest.post('/api/payments').expect(403);
   });
 
   test('should return a status 400 if post without customer id', async () => {
     const { body } = await supertest
-      .post('/payments')
+      .post('/api/payments')
       .set(headers)
       .expect(400);
     expect(body).toHaveProperty('message', 'Please include a valid token!');
@@ -68,7 +68,7 @@ describe('/payments routes', () => {
 
   test('should not return a customer id & message on succesful subscription given invalid token', async () => {
     await supertest
-      .post('/payments')
+      .post('/api/payments')
       .send({ id: 'tok-whatever' })
       .set(headers)
       .expect(400);

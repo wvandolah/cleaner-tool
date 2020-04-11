@@ -41,26 +41,26 @@ describe('/assistant routes', () => {
   });
 
   test('get all ast return 403 if no token', async () => {
-    const response = await supertest.get('/assistants');
+    const response = await supertest.get('/api/assistants');
 
     expect(response.status).toBe(403);
   });
 
   test('get all ast', async () => {
-    const response = await supertest.get('/assistants').set(headers);
+    const response = await supertest.get('/api/assistants').set(headers);
 
     expect(response.status).toBe(200);
   });
 
   test('returns the correct number of asts', async () => {
-    const response = await supertest.get('/assistants').set(headers);
+    const response = await supertest.get('/api/assistants').set(headers);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveLength(3);
   });
 
   test('get one ast', async () => {
-    const response = await supertest.get('/assistants/1').set(headers);
+    const response = await supertest.get('/api/assistants/1').set(headers);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('ast_id');
@@ -68,7 +68,7 @@ describe('/assistant routes', () => {
 
   test('get correct ast by id', async () => {
     const response = await supertest
-      .get('/assistants/1')
+      .get('/api/assistants/1')
       .set(headers)
       .expect(200);
     expect(response.body.user_id).toBe(data[0].user_id);

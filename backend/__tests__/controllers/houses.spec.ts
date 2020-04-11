@@ -41,7 +41,7 @@ describe('/house routes', () => {
   });
 
   test('GET request is denied with no token', async () => {
-    await supertest.get('/houses').expect(403);
+    await supertest.get('/api/houses').expect(403);
   });
 
   test('POST test request is denied with no token', async () => {
@@ -54,7 +54,7 @@ describe('/house routes', () => {
     };
 
     await supertest
-      .post('/houses?test=true')
+      .post('/api/houses?test=true')
       .send(newHouse)
       .expect(403);
   });
@@ -69,18 +69,18 @@ describe('/house routes', () => {
     };
 
     await supertest
-      .put('/houses/1')
+      .put('/api/houses/1')
       .send(newHouse)
       .expect(403);
   });
 
   test('DELETE request is denied with no token', async () => {
-    await supertest.delete('/houses/2').expect(403);
+    await supertest.delete('/api/houses/2').expect(403);
   });
 
   test('GET request with no id returns all houses', async () => {
     const response = await supertest
-      .get('/houses')
+      .get('/api/houses')
       .set(headers)
       .expect(200);
     expect(response.body.length).toBe(3);
@@ -88,7 +88,7 @@ describe('/house routes', () => {
 
   test('Get request with id returns a specific user', async () => {
     const response = await supertest
-      .get('/houses/1')
+      .get('/api/houses/1')
       .set(headers)
       .expect(200);
     expect(response.body).toHaveProperty('id');
@@ -97,7 +97,7 @@ describe('/house routes', () => {
 
   test('Get request with user query returns houses of which the user ID matches default_ast', async () => {
     const { body } = await supertest
-      .get('/houses/1?user=true')
+      .get('/api/houses/1?user=true')
       .set(headers)
       .expect(200);
     expect(body.default_ast).toBe(1);
@@ -106,7 +106,7 @@ describe('/house routes', () => {
 
   test('Get request with invalid id returns a 404', async () => {
     await supertest
-      .get('/houses/69')
+      .get('/api/houses/69')
       .set(headers)
       .expect(404);
   });
@@ -120,12 +120,12 @@ describe('/house routes', () => {
       price: 959.55,
     };
     await supertest
-      .post('/houses?test=true')
+      .post('/api/houses?test=true')
       .send(newHouse)
       .set(headers)
       .expect(201);
     const { body } = await supertest
-      .get(`/houses/${data.length + 1}`)
+      .get(`/api/houses/${data.length + 1}`)
       .set(headers)
       .expect(200);
     expect(body.address).toBe(
@@ -144,13 +144,13 @@ describe('/house routes', () => {
       price: 959.55,
     };
     await supertest
-      .put('/houses/1')
+      .put('/api/houses/1')
       .send(newHouse)
       .set(headers)
       .expect(201);
 
     const { body } = await supertest
-      .get('/houses/1')
+      .get('/api/houses/1')
       .set(headers)
       .expect(200);
     expect(body.address).toBe(
@@ -160,7 +160,7 @@ describe('/house routes', () => {
 
   test('DELETE request is successful', async () => {
     const { body } = await supertest
-      .delete('/houses/2')
+      .delete('/api/houses/2')
       .set(headers)
       .expect(200);
     expect(body).toBe(1);

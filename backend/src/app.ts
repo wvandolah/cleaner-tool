@@ -23,7 +23,7 @@ server.use(express.static(path.resolve(path.join(__dirname, '../../frontend/buil
 server.get('/', (__, res) => res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html')));
 
 server
-  .route('/users')
+  .route('/api/users')
   .get(verifyToken, users.get)
   .post(users.post)
   .put(verifyToken, users.putByExtId);
@@ -32,76 +32,76 @@ server
 server.use(verifyToken);
 
 server
-  .route('/users/:id')
+  .route('/api/users/:id')
   .get(users.get)
   .put(users.put)
   .delete(users.deleteU);
 
-server.route('/guests').post(guests.post);
+server.route('/api/guests').post(guests.post);
 
-server.route('/guests/:id').put(guests.put);
+server.route('/api/guests/:id').put(guests.put);
 
 server
-  .route('/houses')
+  .route('/api/houses')
   .get(houses.get)
   .post(houses.post);
 
 server
-  .route('/houses/:id')
+  .route('/api/houses/:id')
   .get(houses.get)
   .put(houses.put)
   .delete(houses.deleteU);
 
 server
-  .route('/payments')
+  .route('/api/payments')
   .get(payments.get)
   .post(payments.post);
 
 server
-  .route('/connect')
+  .route('/api/connect')
   .post(verifyToken, connect.post)
   .delete(verifyToken, connect.deleteL);
 
-server.route('/connect/createpayment').post(connect.createPayment);
+server.route('/api/connect/createpayment').post(connect.createPayment);
 
-server.route('/lists').post(lists.post);
+server.route('/api/lists').post(lists.post);
 /* this get route looks for a query. if `lists/1?stay=true`
 the id should be for a stay. Anything else the id should be for a house
 */
 server
-  .route('/lists/:id')
+  .route('/api/lists/:id')
   .get(lists.get)
   .delete(lists.deleteL);
 
 server
-  .route('/items')
+  .route('/api/items')
   .get(items.get)
   .post(items.post);
 server
-  .route('/items/:id')
+  .route('/api/items/:id')
   .get(items.get)
   .put(items.put)
   .delete(items.deleteL);
 
-server.route('/assistants').get(assistants.get);
+server.route('/api/assistants').get(assistants.get);
 
 server
-  .route('/assistants/:id')
+  .route('/api/assistants/:id')
   .get(assistants.getId)
   .post(assistants.postAst)
   .delete(assistants.delAst);
 
-server.route('/itemComplete').post(items.itemComplete);
+server.route('/api/itemComplete').post(items.itemComplete);
 
-server.route('/email').post(verifyToken, email.send);
+server.route('/api/email').post(verifyToken, email.send);
 
 server
-  .route('/stays')
+  .route('/api/stays')
   .get(stays.getAll)
   .post(stays.post);
 
 server
-  .route('/stays/:id')
+  .route('/api/stays/:id')
   .get(stays.get)
   .put(stays.put);
 

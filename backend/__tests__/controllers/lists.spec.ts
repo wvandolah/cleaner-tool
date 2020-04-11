@@ -43,7 +43,7 @@ describe('/list routes', () => {
   });
 
   test('get request fails if there is no token', async () => {
-    await supertest.get('/lists/1').expect(403);
+    await supertest.get('/api/lists/1').expect(403);
   });
 
   test('post request fails if there is no token', async () => {
@@ -52,25 +52,25 @@ describe('/list routes', () => {
       type: 'before',
     };
     await supertest
-      .post('/lists/')
+      .post('/api/lists/')
       .send(newList)
       .expect(403);
   });
 
   test('delete request fails if there is no token', async () => {
-    await supertest.delete('/lists/1').expect(403);
+    await supertest.delete('/api/lists/1').expect(403);
   });
 
   test('asking for lists on house that isnt reall returns 404', async () => {
     await supertest
-      .get('/lists/111')
+      .get('/api/lists/111')
       .set(headers)
       .expect(404);
   });
 
   test('when given a valid house, should return all lists and 200', async () => {
     const { body } = await supertest
-      .get('/lists/1')
+      .get('/api/lists/1')
       .set(headers)
       .expect(200);
     expect(body).toHaveProperty('after');
@@ -82,7 +82,7 @@ describe('/list routes', () => {
 
   test('when given a valid stay, should return all lists and 200', async () => {
     const { body } = await supertest
-      .get('/lists/1?stay=true')
+      .get('/api/lists/1?stay=true')
       .set(headers)
       .expect(200);
     expect(body).toHaveProperty('after');
@@ -98,7 +98,7 @@ describe('/list routes', () => {
       type: 'before',
     };
     await supertest
-      .post('/lists/')
+      .post('/api/lists/')
       .send(newList)
       .set(headers)
       .expect(400);
@@ -106,7 +106,7 @@ describe('/list routes', () => {
 
   test('able to delete list', async () => {
     await supertest
-      .delete('/lists/1')
+      .delete('/api/lists/1')
       .set(headers)
       .expect(200);
   });
@@ -117,7 +117,7 @@ describe('/list routes', () => {
       type: 'before',
     };
     await supertest
-      .post('/lists/')
+      .post('/api/lists/')
       .send(newList)
       .set(headers)
       .expect(201);
