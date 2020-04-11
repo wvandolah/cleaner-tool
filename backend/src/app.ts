@@ -123,5 +123,4 @@ const options = {
 server.use(companion.app(options));
 
 server.use(errorHandler);
-server.get('/*', (__, res) => res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html')));
 export default server;
