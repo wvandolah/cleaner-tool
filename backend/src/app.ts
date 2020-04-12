@@ -120,7 +120,6 @@ const options = {
     protocol: 'http',
   },
 };
-server.get('/*', (__, res) => res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html')));
 server.use(companion.app(options));
 
 server.use(errorHandler);
